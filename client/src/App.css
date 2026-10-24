@@ -1,0 +1,902 @@
+/* =========================================================
+   TRADEX – TRADINGVIEW-INSPIRED TRADING PLATFORM STYLES
+   ========================================================= */
+
+/* ═══════════════════════════════════════════════
+   LAYOUT & STRUCTURE
+   ═══════════════════════════════════════════════ */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+}
+
+.app-main {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px 24px;
+  min-width: 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    padding: 24px 32px;
+    margin-left: var(--sidebar-width-expanded);
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   CARD SYSTEM – TradingView Panel Style
+   ═══════════════════════════════════════════════ */
+.tradex-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tradex-card:hover {
+  border-color: var(--card-border-hover);
+}
+
+.stock-card {
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.stock-card:hover {
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 1px var(--primary-accent);
+  transform: translateY(-1px);
+}
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 40%, rgba(41, 98, 255, 0.03) 100%);
+  pointer-events: none;
+}
+
+.stat-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════
+   NAVBAR – TradingView Top Bar
+   ═══════════════════════════════════════════════ */
+.tradex-navbar {
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid var(--card-border);
+  height: var(--header-height);
+  z-index: 1020;
+  padding: 0;
+}
+
+.brand-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--primary-subtle);
+  border: 1px solid rgba(41, 98, 255, 0.2);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.brand-logo-icon:hover {
+  background: rgba(41, 98, 255, 0.2);
+  border-color: rgba(41, 98, 255, 0.4);
+}
+
+.brand-text {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-strong);
+}
+
+.text-primary-accent {
+  color: var(--primary-accent) !important;
+}
+
+/* Balance Chip – TradingView Watchlist Style */
+.balance-pill {
+  background-color: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+  gap: 8px;
+}
+
+.balance-pill:hover {
+  border-color: var(--card-border-hover);
+  background-color: var(--surface-hover);
+}
+
+.balance-icon-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--success-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balance-label {
+  font-size: 0.769rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.balance-amount {
+  font-size: 0.923rem;
+  color: var(--success-color);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-profile-badge {
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+}
+
+.user-profile-badge:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--card-border);
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+  font-size: 0.923rem;
+}
+
+.btn-logout:hover {
+  background: var(--danger-bg);
+  border-color: var(--danger-border);
+  color: var(--danger-color);
+}
+
+/* ═══════════════════════════════════════════════
+   SIDEBAR – TradingView Left Panel
+   ═══════════════════════════════════════════════ */
+.tradex-sidebar {
+  width: var(--sidebar-width-expanded);
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  z-index: 1010;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform var(--transition-smooth);
+}
+
+@media (max-width: 991.98px) {
+  .tradex-sidebar {
+    transform: translateX(-100%);
+    top: 0;
+    width: 260px;
+    z-index: 1030;
+  }
+
+  .tradex-sidebar.show {
+    transform: translateX(0);
+  }
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-bg);
+  backdrop-filter: blur(4px);
+  z-index: 1025;
+}
+
+.sidebar-menu .nav-link {
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+  margin: 1px 0;
+  font-size: 0.923rem;
+  padding: 8px 12px;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-menu .nav-link:hover {
+  color: var(--text-strong);
+  background-color: var(--surface-hover);
+}
+
+.sidebar-menu .active-link {
+  color: var(--text-strong) !important;
+  background-color: var(--primary-subtle) !important;
+  border-left: 3px solid var(--primary-accent) !important;
+  font-weight: 500;
+}
+
+.sidebar-menu .active-link .nav-icon {
+  color: var(--primary-accent);
+}
+
+.sidebar-bottom-card {
+  background: linear-gradient(135deg, rgba(41, 98, 255, 0.08) 0%, rgba(41, 98, 255, 0.02) 100%);
+  border: 1px solid rgba(41, 98, 255, 0.12);
+  border-radius: 6px;
+}
+
+/* ═══════════════════════════════════════════════
+   BADGES & INDICATORS – TradingView Style
+   ═══════════════════════════════════════════════ */
+.badge-live-pulse {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid var(--success-border);
+  font-size: 0.692rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-transform: uppercase;
+}
+
+.badge-live-pulse::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--success-color);
+  animation: pulseGlow 2s infinite;
+}
+
+.pulse-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--success-color);
+  box-shadow: 0 0 6px var(--success-color);
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+.badge-sector {
+  background-color: var(--surface-hover);
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+  font-size: 0.769rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+
+.badge-profit {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid var(--success-border);
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.badge-loss {
+  background-color: var(--danger-bg);
+  color: var(--danger-color);
+  border: 1px solid var(--danger-border);
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.trend-positive {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+.trend-negative {
+  background-color: var(--danger-bg);
+  color: var(--danger-color);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+.stock-avatar-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: var(--surface-hover);
+  color: var(--primary-accent);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.846rem;
+}
+
+/* ═══════════════════════════════════════════════
+   FORMS & INPUTS – TradingView Input Style
+   ═══════════════════════════════════════════════ */
+.tradex-input {
+  background-color: var(--bg-dark) !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--text-strong) !important;
+  font-size: 0.923rem;
+  border-radius: 4px;
+  padding: 8px 12px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tradex-input:focus {
+  border-color: var(--primary-accent) !important;
+  box-shadow: 0 0 0 1px var(--primary-accent) !important;
+  background-color: var(--bg-dark) !important;
+}
+
+.tradex-input::placeholder {
+  color: var(--text-muted);
+}
+
+.tradex-select {
+  background-color: var(--bg-dark) !important;
+  border: 1px solid var(--card-border) !important;
+  color: var(--text-strong) !important;
+  font-size: 0.923rem;
+  border-radius: 4px;
+}
+
+.tradex-select:focus {
+  border-color: var(--primary-accent) !important;
+  box-shadow: 0 0 0 1px var(--primary-accent) !important;
+}
+
+.input-group-text {
+  background-color: var(--bg-dark) !important;
+  border-color: var(--card-border) !important;
+  color: var(--text-secondary) !important;
+  border-radius: 4px 0 0 4px;
+}
+
+/* ── Button Variants ── */
+.btn-dark-outline {
+  background-color: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+  font-size: 0.923rem;
+  font-weight: 500;
+}
+
+.btn-dark-outline:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--card-border-hover);
+  color: var(--text-strong);
+}
+
+.btn-preset {
+  background-color: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  font-size: 0.769rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.btn-preset:hover {
+  background-color: var(--surface-hover);
+  color: var(--text-strong);
+}
+
+.timeframe-btn {
+  font-size: 0.769rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.timeframe-btn:hover {
+  color: var(--text-strong);
+  background-color: var(--surface-hover);
+}
+
+.timeframe-btn.active-tf {
+  background-color: var(--primary-accent);
+  color: #ffffff;
+}
+
+/* ── Trade Order Buttons ── */
+.btn-order-buy {
+  background-color: var(--success-color) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.btn-order-buy:hover {
+  background-color: #1e9a8f !important;
+  box-shadow: 0 2px 8px rgba(38, 166, 154, 0.3);
+}
+
+.btn-order-sell {
+  background-color: var(--danger-color) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.btn-order-sell:hover {
+  background-color: #e53935 !important;
+  box-shadow: 0 2px 8px rgba(239, 83, 80, 0.3);
+}
+
+/* ═══════════════════════════════════════════════
+   MODALS – TradingView Dialog Style
+   ═══════════════════════════════════════════════ */
+.tradex-modal-content {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5) !important;
+}
+
+.tradex-modal-backdrop {
+  background-color: var(--overlay-bg) !important;
+  backdrop-filter: blur(4px);
+}
+
+.trade-tab-pill-container {
+  background-color: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 3px;
+}
+
+.trade-tab-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.923rem;
+  padding: 6px 16px;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+}
+
+.trade-tab-btn:hover {
+  color: var(--text-strong);
+}
+
+.trade-tab-btn.active-buy {
+  background-color: var(--success-color);
+  color: #ffffff;
+}
+
+.trade-tab-btn.active-sell {
+  background-color: var(--danger-color);
+  color: #ffffff;
+}
+
+/* Modal close button override */
+.tradex-modal-content .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+  opacity: 0.5;
+}
+
+.tradex-modal-content .btn-close:hover {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   TABLE – TradingView Data Grid Style
+   ═══════════════════════════════════════════════ */
+.tradex-table {
+  --bs-table-bg: transparent !important;
+  --bs-table-hover-bg: rgba(41, 98, 255, 0.04) !important;
+  --bs-table-border-color: var(--card-border) !important;
+  font-size: 0.923rem;
+}
+
+.tradex-table th {
+  padding: 10px 12px;
+  background-color: var(--bg-dark);
+  font-weight: 600;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  font-size: 0.769rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.tradex-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(42, 46, 57, 0.5);
+  vertical-align: middle;
+}
+
+.tradex-table tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+.tradex-table tbody tr:hover {
+  background-color: rgba(41, 98, 255, 0.04) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   WATCHLIST & LIST ITEMS
+   ═══════════════════════════════════════════════ */
+.watchlist-item-hover {
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+}
+
+.watchlist-item-hover:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--card-border);
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER – Compact TradingView Footer
+   ═══════════════════════════════════════════════ */
+.tradex-footer {
+  background-color: var(--navbar-bg);
+  border-top: 1px solid var(--card-border);
+  padding: 8px 0;
+  font-size: 0.769rem;
+}
+
+/* ═══════════════════════════════════════════════
+   LOADER / SPINNER
+   ═══════════════════════════════════════════════ */
+.tradex-spinner {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid var(--card-border);
+  border-top-color: var(--primary-accent);
+  animation: tradexSpin 0.7s linear infinite;
+}
+
+.loader-sm { width: 20px; height: 20px; }
+.loader-md { width: 36px; height: 36px; border-width: 3px; }
+.loader-lg { width: 48px; height: 48px; border-width: 3px; }
+
+@keyframes tradexSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════ */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 4px;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+}
+
+.btn-icon:hover {
+  background-color: var(--surface-hover);
+  color: var(--text-strong);
+}
+
+.hover-white:hover { color: var(--text-strong) !important; }
+.hover-danger:hover { color: var(--danger-color) !important; }
+.hover-primary:hover { color: var(--primary-accent) !important; }
+.hover-underline:hover { text-decoration: underline !important; }
+
+.fill-warning { fill: var(--warning-color); }
+
+.bg-dark-surface {
+  background-color: var(--bg-dark) !important;
+}
+
+.refresh-hover-spin:hover {
+  animation: tradexSpin 0.6s ease infinite;
+}
+
+.btn-xs {
+  font-size: 0.769rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════════
+   AUTH PAGES – Clean Centered Layout
+   ═══════════════════════════════════════════════ */
+.auth-wrapper {
+  background: var(--bg-darker);
+  position: relative;
+}
+
+.auth-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(41, 98, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(41, 98, 255, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+  background-color: rgba(30, 34, 45, 0.95) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   STOCK DETAIL PAGE – TradingView Chart Layout
+   ═══════════════════════════════════════════════ */
+.stock-price-display {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-strong);
+  line-height: 1.1;
+}
+
+.stock-change-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.923rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   ═══════════════════════════════════════════════ */
+@media (max-width: 767.98px) {
+  html {
+    font-size: 12px;
+  }
+
+  .main-content {
+    padding: 12px 16px;
+  }
+
+  .stock-price-display {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .main-content {
+    padding: 16px 20px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   ANIMATION UTILITIES
+   ═══════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* ═══════════════════════════════════════════════
+   TICKER TAPE – TradingView Market Ticker
+   ═══════════════════════════════════════════════ */
+.ticker-tape {
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  border-bottom: 1px solid var(--card-border);
+  padding: 6px 0;
+  white-space: nowrap;
+}
+
+.ticker-tape-inner {
+  display: flex;
+  gap: 24px;
+  animation: tickerScroll 30s linear infinite;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.846rem;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.ticker-item .symbol {
+  font-weight: 600;
+  color: var(--text-strong);
+  font-family: var(--font-mono);
+}
+
+.ticker-item .price {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.ticker-item .change-up {
+  color: var(--success-color);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.ticker-item .change-down {
+  color: var(--danger-color);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════════════
+   MINI SPARKLINE CHART PLACEHOLDER
+   ═══════════════════════════════════════════════ */
+.mini-chart-container {
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  opacity: 0.7;
+}
+
+.mini-chart-bar {
+  flex: 1;
+  background-color: var(--primary-accent);
+  border-radius: 1px 1px 0 0;
+  min-height: 2px;
+  transition: height var(--transition-fast);
+}
+
+.mini-chart-bar.positive {
+  background-color: var(--success-color);
+}
+
+.mini-chart-bar.negative {
+  background-color: var(--danger-color);
+}
+
+/* ═══════════════════════════════════════════════
+   DATA METRIC TILES – TradingView Key Stats
+   ═══════════════════════════════════════════════ */
+.metric-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  background: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+}
+
+.metric-tile .metric-label {
+  font-size: 0.692rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.metric-tile .metric-value {
+  font-size: 1rem;
+  color: var(--text-strong);
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+/* ═══════════════════════════════════════════════
+   MARKET HEATMAP COLORS – FOR STOCK CARDS
+   ═══════════════════════════════════════════════ */
+.heat-strong-up { background-color: rgba(38, 166, 154, 0.3); }
+.heat-mild-up { background-color: rgba(38, 166, 154, 0.15); }
+.heat-neutral { background-color: var(--surface-hover); }
+.heat-mild-down { background-color: rgba(239, 83, 80, 0.15); }
+.heat-strong-down { background-color: rgba(239, 83, 80, 0.3); }
